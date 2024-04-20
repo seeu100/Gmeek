@@ -1,4 +1,4 @@
-Copyright © <span id="year"></span><a href="{{ blogBase['homeUrl'] }}"> {{ blogBase['title'] }} </a>
+<span id="hitokoto_text">:D</span> —— <span id="hitokoto_from_who">:D</span>「<span id="hitokoto_from">:D</span>」<br><span id="busuanzi">❤️感谢第<span></span>位小伙伴的<span></span>次访问本站。</span>
 <p>
 {%- if blogBase['filingNum']!='' -%}
 <a href="https://beian.miit.gov.cn/" target="_blank">{{ blogBase['filingNum'] }}</a>
@@ -18,3 +18,20 @@ if("{{ blogBase['startSite'] }}"!=""){
 }
 </script>
 
+<script>document.getElementById('busuanzi').id='busuanzi_container_site_uv';busuanzi=document.getElementById('busuanzi_container_site_uv');busuanzi.style.display='none';busuanzi.childNodes[1].id='busuanzi_value_site_uv';busuanzi.childNodes[3].id='busuanzi_value_site_pv';</script><script async src='//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'></script>
+
+<script>
+	fetch('https://v1.hitokoto.cn')
+	  .then(response => response.json())
+	  .then(data => {
+		const hitokoto_text = document.querySelector('#hitokoto_text')
+		hitokoto_text.innerText = data.hitokoto
+		const hitokoto_from = document.querySelector('#hitokoto_from')
+		hitokoto_from.innerText = data.from
+		const hitokoto_from_who = document.querySelector('#hitokoto_from_who')
+		hitokoto_from_who.innerText = data.from_who
+	  })
+	  .catch(console.error)
+  </script>
+
+<style>#busuanzi_value_site_uv{color:red}#busuanzi_value_site_pv{color:red}</style>
