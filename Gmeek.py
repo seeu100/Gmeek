@@ -285,12 +285,8 @@ class GMEEK():
 
             self.blogBase[listJsonName][postNum]["postSourceUrl"]="https://github.com/"+options.repo_name+"/issues/"+str(issue.number)
             self.blogBase[listJsonName][postNum]["commentNum"]=issue.get_comments().totalCount
-            if issue.body is not None:
-                self.blogBase[listJsonName][postNum]["wordCount"] = len(issue.body)
-            else:
-                # 处理 body 为空的情况，可以设置默认值或者跳过
-                pass
-
+            self.blogBase[listJsonName][postNum]["wordCount"] = len(issue.body)
+            
             if issue.body==None:
                 self.blogBase[listJsonName][postNum]["description"]=''
             else:
